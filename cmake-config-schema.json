@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CMake Configuration",
+  "description": "A configuration file that helps setup CMake with some automation modules",
+  "type": "object",
+  "properties": {
+    "dependencies": {
+      "type": "array",
+      "description": "Dependencies to fetch using FetchContent",
+      "items": {
+        "type": "object",
+        "description": "A single dependency to fetch",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "A value for the option. You can also use CMake variables inside these if you want the version to be dependent on other configurations"
+                }
+              },
+              "required": [
+                "name",
+                "value"
+              ]
+            }
+          },
+          "recurse_submodules": {
+            "type": "boolean",
+            "description": "Whether or not to download submodules recursively"
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "version"
+        ]
+      }
+    }
+  }
+}
