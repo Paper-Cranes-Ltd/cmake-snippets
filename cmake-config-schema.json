@@ -20,6 +20,10 @@
           "version": {
             "type": "string"
           },
+          "condition": {
+            "type": "string",
+            "description": "A variable name that would define a variable that must true to not skip the dependency"
+          },
           "options": {
             "type": "array",
             "items": {
