@@ -101,6 +101,11 @@ function(json_config_dependencies)
             endif()
 
             fetchcontent_makeavailable("${DEPENDENCY_NAME}")
+
+            string(TOUPPER "${DEPENDENCY_NAME}" DEPENDENCY_NAME_UPPER)
+            string(TOLOWER "${DEPENDENCY_NAME}" DEPENDENCY_NAME_LOWER)
+            set("${DEPENDENCY_NAME_UPPER}_SOURCE_DIR" "${${DEPENDENCY_NAME_LOWER}_SOURCE_DIR}" PARENT_SCOPE)
+            set("${DEPENDENCY_NAME_UPPER}_BINARY_DIR" "${${DEPENDENCY_NAME_LOWER}_BINARY_DIR}" PARENT_SCOPE)
         endforeach()
     endif()
 endfunction()
